@@ -1,22 +1,24 @@
-# 📊 Student Outcomes Analysis
+# 📊 EduPulse Analytics — Student Outcomes Analysis
 
-### EduPulse Analytics | Junior Data Analyst Case Study
+### Junior Data Analyst Case Study
+
+A data analytics project focused on student academic performance, attendance patterns, and pass/fail outcomes using Python and data visualization libraries.
 
 ## 📌 Project Overview
 
-Student Outcomes Analysis is a Python-based data analytics project that examines student academic performance, attendance patterns, and pass/fail outcomes using data analysis and visualization techniques.
+This project analyzes student performance data to identify academic trends, examine the relationship between attendance and marks, calculate pass/fail statistics, and visualize student outcomes.
 
-The project uses Pandas, Matplotlib, Seaborn, and SciPy to explore student marks, calculate statistical measures, analyze the relationship between attendance and marks, and identify students who may require academic support.
+The analysis uses Python libraries to transform the dataset into meaningful statistical insights and actionable recommendations.
 
 ## 🎯 Project Objectives
 
 - Calculate the average and median student marks.
-- Analyze the correlation between attendance percentage and academic marks.
-- Classify students as Pass or Fail using a defined passing threshold.
-- Calculate the total number of passing and failing students.
+- Analyze the correlation between attendance percentage and marks.
+- Classify students as Pass or Fail using a threshold of 50 marks.
+- Calculate the number and percentage of passing and failing students.
 - Visualize the distribution of student marks.
 - Identify high-performing students.
-- Present meaningful findings and recommendations based on the dataset.
+- Highlight students who may require additional academic support.
 
 ## 🗂️ Project Structure
 
@@ -25,16 +27,9 @@ student-outcomes-analysis/
 │
 ├── README.md
 ├── Student_Outcomes_Analysis.ipynb
-└── student_performance_dataset.csv
+├── student_performance_dataset.csv
+└── student_outcomes_analysis_report.pdf
 ```
-
-### File Description
-
-| File | Description |
-|---|---|
-| `README.md` | Project documentation, objectives, methodology, findings, and setup instructions |
-| `Student_Outcomes_Analysis.ipynb` | Jupyter Notebook containing Python code, calculations, and visualizations |
-| `student_performance_dataset.csv` | Dataset containing student information, marks, and attendance percentages |
 
 ## 📁 Dataset Description
 
@@ -48,7 +43,7 @@ The dataset contains 20 student records with the following original columns:
 | `Marks` | Academic marks out of 100 |
 | `Attendance_Percentage` | Student attendance percentage |
 
-A derived `Pass` column is created during analysis using the passing criterion of 50 marks or above.
+A derived `Pass` column is created during the analysis.
 
 ## 🛠️ Technologies Used
 
@@ -57,101 +52,90 @@ A derived `Pass` column is created during analysis using the passing criterion o
 - **Matplotlib** — Data visualization
 - **Seaborn** — Statistical visualization
 - **SciPy** — Statistical analysis
-- **Jupyter Notebook** — Interactive coding and analysis
+- **Jupyter Notebook / Google Colab** — Interactive development environment
 
-## ⚙️ Project Workflow
+## ⚙️ Analysis Performed
 
 ### 1. Data Loading and Exploration
 
-Load the CSV dataset into a Pandas DataFrame and examine the records and column structure.
+Loaded the CSV dataset into a Pandas DataFrame and examined the student records.
 
-### 2. Statistical Analysis
+### 2. Average Marks Calculation
 
-Calculate the average marks, median marks, standard deviation, minimum marks, maximum marks, and average attendance.
+Calculated the mean and median to understand overall academic performance.
 
-### 3. Pass/Fail Classification
+### 3. Attendance and Marks Correlation
 
-Classify students according to the following rule:
+Used Pearson correlation analysis to investigate the linear association between attendance percentage and academic marks.
+
+### 4. Pass/Fail Classification
+
+Applied the following passing rule:
 
 ```python
 df["Pass"] = df["Marks"] >= 50
 ```
 
-Students scoring 50 or above pass, while students scoring below 50 fail.
-
-### 4. Attendance and Marks Correlation
-
-Use Pearson correlation to investigate the linear relationship between attendance percentage and marks.
-
-```python
-from scipy.stats import pearsonr
-
-correlation, p_value = pearsonr(
-    df["Attendance_Percentage"],
-    df["Marks"]
-)
-
-print("Correlation:", correlation)
-print("P-value:", p_value)
-```
+Students scoring 50 or above are classified as Pass, while those scoring below 50 are classified as Fail.
 
 ### 5. Data Visualization
 
-Create visualizations to understand:
+Created visualizations to explore:
 
 - Distribution of student marks.
-- Relationship between attendance and marks.
+- Attendance percentage versus marks.
 - Pass/fail outcome counts.
-- Comparisons of individual student performance.
+- Comparative student performance.
 
 ## 📈 Key Findings
 
-According to the accompanying analysis results:
+The following results are reported in the accompanying PDF analysis report.
 
 | Metric | Result |
 |---|---:|
 | Total students analyzed | 20 |
-| Average marks | 74.55 / 100 |
-| Median marks | 75.50 / 100 |
+| Average marks | 74.55 |
+| Median marks | 75.50 |
 | Standard deviation | 18.17 |
-| Lowest marks | 45 / 100 |
-| Highest marks | 99 / 100 |
+| Lowest marks | 45 |
+| Highest marks | 99 |
 | Average attendance | 81.60% |
 | Attendance range | 61%–99% |
 | Students passed | 18 |
 | Students failed | 2 |
 | Pass percentage | 90% |
 | Fail percentage | 10% |
-| Pearson correlation | -0.524 |
+| Pearson correlation coefficient | -0.524 |
 | Two-sided p-value | 0.018 |
 
 ### Key Observations
 
 - The average student mark was 74.55 out of 100.
-- Eighteen out of 20 students passed the assessment.
-- Student marks ranged from 45 to 99, indicating variation in performance.
-- Attendance and marks showed a moderate negative linear correlation in this sample.
-- Two students scored below the defined passing threshold and may benefit from further academic assessment.
+- Eighteen students passed under the defined threshold.
+- Two students scored below 50 marks and may benefit from additional academic support.
+- The observed attendance–marks correlation was moderately negative in this sample.
+- The marks distribution indicates differences in academic performance across the students.
 
-**Note:** The observed negative correlation does not establish that attendance causes lower marks. The analysis covers only 20 students, so its findings should not be generalized without further investigation.
+**Note:** Correlation does not establish causation. These findings apply only to the supplied 20-student dataset and should not be generalized without further analysis.
 
 ## 💡 Recommendations
 
-1. Provide targeted academic support to students scoring below 50.
-2. Investigate subject difficulty and assessment performance before recommending interventions.
-3. Consider additional factors, such as prior academic performance and learning support.
-4. Analyze more student records to improve the reliability of findings.
-5. Repeat the analysis across additional assessment periods to identify persistent patterns.
+1. Provide targeted academic support to students scoring below the passing threshold.
+2. Investigate subject difficulty, assessment methods, and prior academic performance.
+3. Analyze additional student records to improve the reliability of findings.
+4. Repeat the analysis across multiple assessment periods to identify trends.
+5. Maintain a consistent passing threshold to ensure reproducible reporting.
 
 ## 🚀 How to Run the Project
 
 ### Option 1: Google Colab
 
-1. Open [Google Colab](https://colab.research.google.com/).
-2. Upload `Student_Outcomes_Analysis.ipynb`.
-3. Upload `student_performance_dataset.csv` when required by the notebook.
-4. Execute the cells sequentially.
-5. Review the statistical results and visualizations.
+1. Download or open `Student_Outcomes_Analysis.ipynb`.
+2. Visit [Google Colab](https://colab.research.google.com/).
+3. Upload the notebook.
+4. Upload `student_performance_dataset.csv` when requested by the notebook.
+5. Execute the cells sequentially.
+6. Review the analysis results and visualizations.
 
 ### Option 2: Run Locally
 
@@ -161,9 +145,7 @@ According to the accompanying analysis results:
 git clone https://github.com/YOUR_USERNAME/student-outcomes-analysis.git
 ```
 
-Replace `YOUR_USERNAME` with your GitHub username.
-
-**Step 2: Enter the project directory**
+**Step 2: Navigate to the project directory**
 
 ```bash
 cd student-outcomes-analysis
@@ -175,7 +157,7 @@ cd student-outcomes-analysis
 pip install pandas matplotlib seaborn scipy jupyter
 ```
 
-**Step 4: Launch Jupyter Notebook**
+**Step 4: Start Jupyter Notebook**
 
 ```bash
 jupyter notebook
@@ -183,21 +165,34 @@ jupyter notebook
 
 Open `Student_Outcomes_Analysis.ipynb` and execute the notebook cells.
 
-**Important:** Ensure the notebook reads `student_performance_dataset.csv` from the project directory when running locally. If the notebook uses Google Colab upload commands, adjust the data-loading cell accordingly.
+Ensure the notebook reads `student_performance_dataset.csv` from the project directory when running locally.
+
+## 📄 Project Report
+
+The `student_outcomes_analysis_report.pdf` file contains the detailed report, including:
+
+- Introduction and objectives.
+- Dataset description.
+- Python analysis code.
+- Summary statistics.
+- Pass/fail analysis.
+- Data visualizations.
+- Key findings and recommendations.
+- Limitations and conclusion.
 
 ## ⚠️ Limitations
 
-- The dataset contains only 20 student records.
-- The data represents a single snapshot of student outcomes.
-- Correlation does not imply causation.
-- Additional information about subjects, assessment difficulty, and previous performance is unavailable.
-- Findings are limited to the supplied dataset.
+- The analysis includes only 20 student records.
+- The dataset represents a single snapshot of student outcomes.
+- Correlation does not establish a causal relationship.
+- Other factors influencing academic performance are not included.
+- Additional data is needed to validate whether the observed patterns persist.
 
 ## 🏁 Conclusion
 
-The analysis provides an overview of student academic outcomes using statistical calculations and visualizations. Although 90% of the students met the defined passing criterion, the variation in marks and the two failing outcomes indicate opportunities for further academic investigation.
+The analysis shows an average mark of 74.55 and a pass rate of 90% among the 20 students studied. Although the overall results are encouraging, variation in marks and two below-threshold outcomes indicate opportunities for targeted academic support.
 
-The project demonstrates practical skills in Python programming, exploratory data analysis, statistical interpretation, and data visualization.
+The observed negative attendance–marks correlation requires further investigation before drawing broader conclusions.
 
 ## 👨‍💻 Author
 
@@ -210,6 +205,6 @@ Aspiring AI & Machine Learning Engineer | Python Developer | Final-Year Computer
 
 ---
 
-⭐ If you find this project useful, consider starring the repository.
+⭐ If you find this project useful, consider giving the repository a star.
 
-*Developed for educational and data analytics purposes.*
+*Developed for educational purposes as a student outcomes data analysis case study.*
